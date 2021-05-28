@@ -2,14 +2,20 @@ const retrieveData = require("./retrieveData");
 const spawn = require("./spawn");
 const grow = require("./grow")
 const die = require("./die")
-const clean = require("./clean")
+const clean = require("./clean");
+const report = require("./report");
 
+let startTime = Date.now();
+let cleanCount = 0;
+let iterationCount = 0;
 let slide = retrieveData();
 
-spawn(slide);
-grow(slide);
-die(slide);
-const cleanCount = clean(slide);
+do {
+    iterationCount++;
+    spawn(slide);
+    grow(slide);
+    die(slide);
+    cleanCount = clean(slide);
+} while (cleanCount > 0);
 
-console.log(slide.map(row => row.join("")).join("\n"))
-console.log(cleanCount)
+report(slide, iterationCount, startTime)
