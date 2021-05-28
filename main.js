@@ -1,13 +1,11 @@
 const retrieveData = require("./retrieveData");
-const searchFrame = require("./searchFrame")
+const spawn = require("./spawn");
+const grow = require("./grow")
+
 
 let slide = retrieveData();
 
-for (let row = 0; row < slide.length; row++) {
-    for (let column = 0; column < slide.length; column++) {
-        if (!searchFrame(slide, row, column) && slide[row][column] != "." && slide[row][column] != "#") {
-            slide[row][column] = "o"
-        }
-    }
-}
+spawn(slide)
+grow(slide)
+
 console.log(slide.map(row => row.join("")).join("\n"))
