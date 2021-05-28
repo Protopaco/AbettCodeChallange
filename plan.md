@@ -1,6 +1,7 @@
     L = LIVEABLE
     . = UNLIVEABLE
     o = SPORE
+    x = DEAD
     # = CULTURE
 
 ## Rules:
@@ -20,7 +21,9 @@ locations are also occupied, then the culture dies
 
 1. Create "GROW" scanning function that loops through arrays, and replaces all SPORES(o) with CULTURE(#)
 
-1. Create "DIE" scanning function that loops through arrays, and either changes CULTURE(#) or LIVABLE(L) based on Rule b returns number of changes
+1. Create "DIE" scanning function that loops through arrays, and either changes CULTURE(#) to DEAD(x) based on Rule b returns number of changes
+
+1. Create "CLEAN" scanning function that loops through arrays, and replaces all DEAD(x) with LIVABLE(L)
 
 1. Create main while loop that runs so long as new cultures are spawned or cultures die, include iteration counter
 
